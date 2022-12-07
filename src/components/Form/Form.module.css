@@ -1,0 +1,26 @@
+.container {
+  background-color: aquamarine;
+}
+
+.label_box {
+  border-bottom-right-radius: 0;
+  /* box-sizing: content-box; */
+  /* border-width: 12px;
+    padding: 30px;
+    width: 200px; */
+}
+
+.btn_borde {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  color: #007bff;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.btn_borde:hover,
+.btn_borde:active,
+.btn_borde:focus {
+  color: #fff;
+  background-color: #007bff;
+}
