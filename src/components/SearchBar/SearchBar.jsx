@@ -1,21 +1,62 @@
 import { useState } from "react";
-import style from "./SearchBar.module.css";
+import styled from "styled-components";
+
+const DivSearch = styled.div`
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+`;
+
+const Btn = styled.button`
+  border-radius: 0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em;
+  border: solid #06d6a0;
+  color: #370617;
+  font-weight: 700;
+  font-size: 1em;
+  &:hover {
+    background-color: #ffd60a;
+    cursor: pointer;
+  }
+`;
+
+const Input = styled.input`
+  border-radius: 0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em;
+  border: solid #06d6a0;
+  color: #370617;
+  font-weight: 700;
+  font-size: 1em;
+  &:hover {
+    background-color: #ffd60a;
+  }
+`;
 
 export default function SearchBar(props) {
-  const [id, setCharacter] = useState("");
+  const { onSearch } = props;
+  const [character, setCharacter] = useState("");
 
   const handleChange = (e) => {
-    const { value } = e.target;
-    setCharacter(value);
+    // const { value } = e.target;
+    // setCharacter(value);
+    setCharacter(e.target.value);
   };
 
   return (
-    <div className={style.container}>
-      <input type="search" name="search " id="" onChange={handleChange} />
-      <button onClick={() => props.onSearch(id)}>Agregar</button>
-      <button onClick={() => props.onSearch(Math.floor(Math.random() * 826))}>
+    <DivSearch>
+      <Input
+        type="search"
+        name="search "
+        placeholder="Ingrese # entre 1 y 826"
+        value={character}
+        onChange={handleChange}
+      />
+      <Btn onClick={() => onSearch(character)}>Agregar</Btn>
+      <Btn onClick={() => onSearch(Math.floor(Math.random() * 826))}>
         Agregar Personaje
-      </button>
-    </div>
+      </Btn>
+    </DivSearch>
   );
 }

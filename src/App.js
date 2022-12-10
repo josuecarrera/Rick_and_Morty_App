@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import {  Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 import Cards from "./components/Cards/Cards.jsx";
 import NavBar from "./components/Nav/NavBar.jsx";
 import About from "./components/About/About.jsx";
 import Detail from "./components/Detail/Detail.jsx";
 import Form from "./components/Form/Form.jsx";
+import Favorites from './components/favorites/Favorites.jsx'
 
 function App() {
   const location = useLocation();
@@ -49,7 +50,8 @@ function App() {
   return (
     <div className="App" style={{ padding: "25px" }}>
       <div>{location.pathname !== "/" && <NavBar onSearch={onSearch} />}</div>
-      <Routes>
+      
+        <Routes>
         <Route path="/" element={<Form login={login}/>} />
         <Route
           path="/home"
@@ -57,7 +59,10 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:detailId" element={<Detail />} />
+        <Route path="/favorites" element={<Favorites/>}/>
       </Routes>
+    
+     
     </div>
   );
 }

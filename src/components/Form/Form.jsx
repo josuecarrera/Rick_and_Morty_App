@@ -1,7 +1,49 @@
 import React from "react";
 import { validation } from "./validation.js";
-import styled from "./Form.module.css";
+import style from "./Form.module.css";
+import styled from "styled-components";
 //rfc
+
+const Input = styled.input.attrs((props) => ({
+  // we can define static props
+  type: "text",
+
+  // or we can define dynamic ones
+  size: props.size || "1em",
+}))`
+  color: palevioletred;
+  font-size: 0.7em;
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+
+  /* here we use the dynamically computed prop */
+  margin: ${(props) => props.size};
+  padding: ${(props) => props.size};
+`;
+
+const Input2 = styled.input.attrs((props) => ({
+  // we can define static props
+  type: "password",
+
+  // or we can define dynamic ones
+  size: props.size || "1em",
+}))`
+  color: palevioletred;
+  font-size: 0.7em;
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+
+  /* here we use the dynamically computed prop */
+  margin: ${(props) => props.size};
+  padding: ${(props) => props.size};
+`;
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: #06d6a0;
+`;
+
 export default function Form(props) {
   const [userData, setUserData] = React.useState({
     username: "",
@@ -23,16 +65,15 @@ export default function Form(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.login(userData);
-  }
+  };
 
   return (
-    <div className={styled.container}>
+    <div className={style.container}>
       <form onSubmit={handleSubmit}>
         <label style={{ color: "white" }} htmlFor="username">
-          UserName:{" "}
+          <Title>UserName: </Title>
         </label>
-        <input
-          className={styled.label_box}
+        <Input
           id="username"
           name="username"
           placeholder="Ingrese el usuario..."
@@ -40,12 +81,12 @@ export default function Form(props) {
           value={userData.username}
           onChange={handleInputChange}
         />
-        <p>{erros.username}</p>
+        <p style={{ color: 'Chartreuse' }}>{erros.username}</p>
         <label style={{ color: "white" }} htmlFor="password">
-          Password:{" "}
+          <Title>Password:</Title>
+          {/* Password:{""} */}
         </label>
-        <input
-          className={styled.label_box}
+        <Input2
           id="password"
           name="password"
           type="password"
@@ -53,8 +94,8 @@ export default function Form(props) {
           value={userData.password}
           onChange={handleInputChange}
         />
-        <p>{erros.password}</p>
-        <input  type="submit" className={styled.btn_borde} />
+        <p style={{ color: 'Chartreuse' }}>{erros.password}</p>
+        <input type="submit" className={style.btn_borde} />
         {/* el type se comporta como un boton */}
       </form>
     </div>

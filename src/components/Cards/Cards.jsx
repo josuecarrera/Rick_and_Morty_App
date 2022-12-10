@@ -1,20 +1,14 @@
 import Card from "../Card/Card";
-// import './Cadrs.css'
+import styles from "../Cards/Cards.module.css";
 
 export default function Cards(props) {
   const { characters, onClose } = props;
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        padding: "35px",
-      }}
-    >
+    <div className={styles.container}>
       {characters.map((char) => (
         <Card
-          detailId={char.id}
           key={char.name}
+          id={char.id}
           name={char.name}
           species={char.species}
           gender={char.gender}

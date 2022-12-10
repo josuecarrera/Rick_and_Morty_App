@@ -5,3 +5,17 @@
 .h2_name {
     text-decoration: none;
 }
+
+.button {
+    border-radius: 0.5em;
+    margin-left: 0.5em;
+    padding: 0.5em;
+    border: solid #06d6a0;
+    color: #370617;
+    font-weight: 700;
+    font-size: 1em;
+    /* &:hover {
+      background-color: #ffd60a;
+      cursor: pointer;
+    } */
+}
