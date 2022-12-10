@@ -96,6 +96,8 @@ export default function Form(props) {
         />
         <p style={{ color: 'Chartreuse' }}>{erros.password}</p>
         <input type="submit" className={style.btn_borde} />
+        <h2 style={{ color: 'Chartreuse' }}>correo: josuecarrera@hotmail.com</h2>
+        <h2 style={{ color: 'Chartreuse' }}>Contrasenia: josue1234</h2>
         {/* el type se comporta como un boton */}
       </form>
     </div>
